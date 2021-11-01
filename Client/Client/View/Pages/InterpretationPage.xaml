@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="Client.InterpretationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource CustomToolTip}"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0" Height="325" Width="Auto" Style="{StaticResource TabControl}">
+            <TabItem Style="{StaticResource TabItem}" HorizontalAlignment="Center">
+                <TabItem.Header>
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <TextBlock Text="Lyrics" FontSize="19" Foreground="White" Style="{StaticResource TextBlock}" Background="#e52b50" Height="27" VerticalAlignment="Top"/>
+                    </Grid>
+                </TabItem.Header>
+                <Grid>
+                    <RichTextBox Margin="0 0 0 20" IsReadOnly="True" Grid.Column="0" Grid.Row="1" x:Name="SongText" SelectionChanged="SelectionLyrics" Style="{StaticResource RichTextBox}" FontSize="14" Cursor="IBeam">
+                    </RichTextBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Style="{StaticResource TabItem}">
+                <TabItem.Header>
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <TextBlock Text="Interpretations" FontSize="19" Foreground="White" Style="{StaticResource TextBlock}" Background="#e52b50"/>
+                    </Grid>
+                </TabItem.Header>
+                <Grid>
+                    <StackPanel>
+                        <ScrollViewer CanContentScroll="True" Height="240">
+                            <ListBox x:Name="InterpretationList" Template="{StaticResource NoScroll}" VerticalAlignment="Top">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Text="{Binding User}" FontSize="16" Style="{StaticResource TextBlock}"/>
+                                                    <TextBlock Grid.Column="1" Margin="10 2" Text="{Binding Date}" FontSize="14" Style="{StaticResource TextBlock}"/>
+                                                </Grid>
+
+                                                <TextBlock Grid.Row="1" Text="{Binding WordsLoop}" FontSize="16" Height="20" Style="{StaticResource TextBlock}"/>
+                                            </Grid>
+                                            <Grid Margin="0 50 0 0">
+                                                <RichTextBox FontSize="16" IsReadOnly="true" Style="{StaticResource RichTextBox}">
+                                                    <FlowDocument>
+                                                        <Paragraph>
+                                                            <Run Text="{Binding Words}">
+                                                            </Run>
+                                                        </Paragraph>
+                                                    </FlowDocument>
+                                                </RichTextBox>
+                                            </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <TextBlock Grid.Row="1" x:Name="LyricsWordInterpr" FontSize="16" Text="Words" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextAlignment="Center"/>
+        <RichTextBox Grid.Row="1" Margin="0 20 0 0" Height="100" x:Name="UsersInterpr" Style="{StaticResource RichTextBox}" FontSize="16" Cursor="IBeam">
+            <FlowDocument>
+                <Paragraph>
+                    <Run>
+                        Write Your Opinion!
+                    </Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+
+        <Button Grid.Row="2" Margin="0 0 10 20" Grid.Column="1" Style="{StaticResource ProfileButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="InterprClick" Width="200" Height="30">
+            <TextBlock FontSize="19" Text="Leave a Interpretation" Style="{StaticResource TextBlock}" TextAlignment="Center" Height="26"/>
+        </Button>
+    </Grid>
+</UserControl>

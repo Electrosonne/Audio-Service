@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Client.NewPlaylistPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource CustomToolTip}"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <TextBlock FontSize="19" Text="Add Playlist To Server" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextAlignment="Center" Height="26"/>
+
+        <TextBlock Margin="-440,30,-10,438" FontSize="19" Text="Image" Style="{StaticResource TextBlock}" TextAlignment="Center" Height="26"/>
+        <Button Margin="170 -400 0 0" Style="{StaticResource ActionButton}" HorizontalAlignment="Left"  ToolTip="Change Image" Click="ButtonFileImage_Click">
+            <materialDesign:PackIcon Kind="FolderImage" Width="20" Height="20"/>
+        </Button>
+
+        <Image Margin="10,80,20,150" MaxHeight="380" Source="../../based/icon.png" MaxWidth="600" Stretch="Uniform" HorizontalAlignment="Left" x:Name="NewPlaylistMusic"/>
+
+        <TextBlock Margin="0 0 0 80" FontSize="19" Text="Name" Width="55" Style="{StaticResource TextBlock}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="26"/>
+        <TextBox Margin="60 0 0 80" Width="156" VerticalAlignment="Bottom"
+                                         Style="{StaticResource TextBox}" HorizontalAlignment="Left" x:Name="NewPlaylistName"/>
+
+        <TextBlock Margin="0 0 0 30" FontSize="19" Text="Author" Width="65" Style="{StaticResource TextBlock}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="26"/>
+        <TextBox Margin="70,0,0,30" Width="150" VerticalAlignment="Bottom"
+                                         Style="{StaticResource TextBox}" HorizontalAlignment="Left" x:Name="NewPlaylistAuthor"/>
+
+        <Button Margin="0 0 10 20" Style="{StaticResource ProfileButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" ToolTip="Upload" Click="AddPlaylistClick" Width="150" Height="50">
+            <TextBlock FontSize="19" Text="AddPlaylist" Style="{StaticResource TextBlock}" TextAlignment="Center" Height="26"/>
+        </Button>
+    </Grid>
+</UserControl>
